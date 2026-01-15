@@ -2,12 +2,12 @@
   "name": "ghpagesdemo",
   "version": "0.1.0",
   "private": true,
-"homepage": "https://maheshadvaint.github.io/ghpagesdemo",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.13.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-scripts": "5.0.1",
@@ -17,7 +17,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-   "test": "react-scripts test --watch=false",
+    "test": "react-scripts test --watch=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
