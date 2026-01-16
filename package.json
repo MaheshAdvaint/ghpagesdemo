@@ -24,9 +24,6 @@
     "test": "react-scripts test --watch=false",
     "eject": "react-scripts eject"
   },
- 
-
-
   "build": {
     "appId": "com.mahesh.ghpagesdemo",
     "productName": "MyElectronApp",
@@ -50,9 +47,6 @@
       "target": "nsis"
     }
   },
-
-
-
   "eslintConfig": {
     "extends": [
       "react-app",
