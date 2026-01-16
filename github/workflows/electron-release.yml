@@ -1,4 +1,4 @@
-name: Electron Linux ARM64 Build
+name: Electron Linux ARM64
 
 on:
   push:
@@ -28,3 +28,4 @@ jobs:
         run: npm run electron:build -- --linux arm64 --publish=always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
