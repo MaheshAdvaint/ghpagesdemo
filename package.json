@@ -2,6 +2,8 @@
   "name": "ghpagesdemo",
   "version": "0.1.0",
   "private": true,
+  "description": "My Electron app",
+  "author": "maheshb@advaintai.com",
   "main": "electron/main.js",
   "homepage": ".",
   "dependencies": {
