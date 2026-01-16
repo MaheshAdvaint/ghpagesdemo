@@ -1,0 +1,30 @@
+name: Electron Linux ARM64 Build
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-linux-arm64:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build & Publish Linux ARM64
+        run: npm run electron:build -- --linux arm64 --publish=always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
