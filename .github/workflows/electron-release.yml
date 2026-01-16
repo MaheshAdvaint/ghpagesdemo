@@ -1,32 +1,27 @@
-name: Electron Release
+name: Build Electron App
 
 on:
   push:
     tags:
-      - "v*.*.*"
-
-permissions:
-  contents: write
+      - "v*"
 
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
 
-    env:                     # ✅ IMPORTANT (JOB LEVEL)
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    permissions:
+      contents: write   # REQUIRED for releases
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
+          node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Build & Publish Electron app
+      - name: Build and publish
         run: npm run electron:build -- --publish=always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
