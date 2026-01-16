@@ -26,11 +26,19 @@
   },
  
 
-"build": {
-  "extends": null,
 
-  "appId": "com.company.myproduct",
-  "productName": "MyElectronApp",
+  "build": {
+    "appId": "com.mahesh.ghpagesdemo",
+    "productName": "MyElectronApp",
+    "files": [
+      "build/**/*",
+      "electron/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
     "publish": [
       {
         "provider": "github",
@@ -38,34 +46,12 @@
         "repo": "ghpagesdemo"
       }
     ],
-
-  "directories": {
-    "output": "dist"
+    "win": {
+      "target": "nsis"
+    }
   },
 
-  "files": [
-    "build/**/*",
-    "electron/**/*"
-  ],
 
-  "extraMetadata": {
-    "main": "electron/main.js"
-  },
-
-  "asar": true,
-
-  "win": {
-    "target": "nsis"
-  },
-
-  "linux": {
-    "target": "AppImage"
-  },
-
-  "mac": {
-    "target": "dmg"
-  }
-},
 
   "eslintConfig": {
     "extends": [
