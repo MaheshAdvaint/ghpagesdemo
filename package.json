@@ -2,6 +2,8 @@
   "name": "ghpagesdemo",
   "version": "0.1.0",
   "private": true,
+  "main": "electron/main.js",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -17,9 +19,47 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "electron:dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && cross-env ELECTRON_START_URL=http://localhost:3000 electron .\"",
+    "electron:build": "npm run build && electron-builder",
     "test": "react-scripts test --watch=false",
     "eject": "react-scripts eject"
   },
+ 
+
+"build": {
+  "extends": null,
+
+  "appId": "com.company.myproduct",
+  "productName": "MyElectronApp",
+
+  "directories": {
+    "output": "dist"
+  },
+
+  "files": [
+    "build/**/*",
+    "electron/**/*"
+  ],
+
+  "extraMetadata": {
+    "main": "electron/main.js"
+  },
+
+  "asar": true,
+
+  "win": {
+    "target": "nsis"
+  },
+
+  "linux": {
+    "target": "AppImage"
+  },
+
+  "mac": {
+    "target": "dmg"
+  }
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -39,6 +79,11 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
+    "gh-pages": "^6.3.0",
+    "wait-on": "^9.0.3"
   }
 }
