@@ -1,4 +1,4 @@
-name: Electron Release
+name: Electron Linux AppImage (ARM)
 
 on:
   push:
@@ -9,24 +9,22 @@ permissions:
   contents: write
 
 jobs:
-  build-windows:
-    runs-on: windows-latest
-
-    env:                     # ✅ IMPORTANT (JOB LEVEL)
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  build-linux-arm:
+    runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build & Publish Electron app
-        run: npm run electron:build -- --publish=always
+      - name: Build Linux ARM AppImage
+        run: npm run electron:build -- --linux appimage --arm64 --publish=always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
