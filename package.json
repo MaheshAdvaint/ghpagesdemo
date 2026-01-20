@@ -12,6 +12,7 @@
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.13.2",
+    "mqtt": "^5.14.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-scripts": "5.0.1",
@@ -35,8 +36,20 @@
       "node_modules/**/*",
       "package.json"
     ],
-      "extraMetadata": {
+    "extraMetadata": {
       "main": "electron/main.js"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "Utility"
     },
     "directories": {
       "buildResources": "assets"
